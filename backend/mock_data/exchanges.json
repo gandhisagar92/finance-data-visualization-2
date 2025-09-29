@@ -1,0 +1,37 @@
+{
+  "exchanges": [
+    {
+      "exchangeId": "NSDQ",
+      "exchangeCode": "NSDQ",
+      "name": "NASDAQ Stock Market",
+      "status": "ACTIVE",
+      "settlementDays": "2",
+      "venueId": "XNAS",
+      "currency": "USD",
+      "country": "US",
+      "timezone": "America/New_York"
+    },
+    {
+      "exchangeId": "NYSE",
+      "exchangeCode": "NYSE",
+      "name": "New York Stock Exchange",
+      "status": "ACTIVE",
+      "settlementDays": "2",
+      "venueId": "XNYS",
+      "currency": "USD",
+      "country": "US",
+      "timezone": "America/New_York"
+    },
+    {
+      "exchangeId": "CBOE",
+      "exchangeCode": "CBOE",
+      "name": "Chicago Board Options Exchange",
+      "status": "ACTIVE",
+      "settlementDays": "1",
+      "venueId": "XCBO",
+      "currency": "USD",
+      "country": "US",
+      "timezone": "America/Chicago"
+    }
+  ]
+}

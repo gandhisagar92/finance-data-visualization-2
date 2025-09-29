@@ -1,0 +1,183 @@
+relationships:
+  Stock:
+    - name: "HAS_LISTING"
+      target_type: "Listing"
+      cardinality: "1:many"
+      relationship_label: "LISTING"
+      expensive: false
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_instrument_listing_ids"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+      
+    - name: "HAS_ISSUER"
+      target_type: "InstrumentParty"
+      cardinality: "1:1"
+      relationship_label: "ISSUER"
+      expensive: false
+      fetch_config:
+        provider: "PartyDataProvider"
+        method: "get_instrument_issuer"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+      
+    - name: "IS_UNDERLYING_FOR"
+      target_type: "Option"
+      cardinality: "1:many"
+      relationship_label: "HAS_OPTIONS"
+      expensive: true
+      expensive_threshold: 1000
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_options_by_underlying_ids"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "underlying_id"
+      display_in_graph: true
+      tree_list_config:
+        enabled: true
+        columns:
+          - field: "instrumentId"
+            label: "Option ID"
+            sortable: true
+          - field: "optionType"
+            label: "Type"
+            filterable: true
+          - field: "strike"
+            label: "Strike"
+            sortable: true
+          - field: "expirationDate"
+            label: "Expiry"
+            sortable: true
+            filterable: true
+        default_sort:
+          field: "expirationDate"
+          direction: "asc"
+        filters:
+          - field: "optionType"
+            type: "select"
+            options: ["Call", "Put"]
+          - field: "expirationDate"
+            type: "date_range"
+
+  Option:
+    - name: "HAS_LISTING"
+      target_type: "Listing"
+      cardinality: "1:many"
+      relationship_label: "LISTING"
+      expensive: false
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_instrument_listing_ids"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+      
+    - name: "HAS_UNDERLYING"
+      target_type: "Stock"
+      cardinality: "1:1"
+      relationship_label: "UNDERLYING"
+      expensive: false
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_option_underlying"
+        parameters:
+          - source_field: "underlyingInstrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+
+  Future:
+    - name: "HAS_LISTING"
+      target_type: "Listing"
+      cardinality: "1:many"
+      relationship_label: "LISTING"
+      expensive: false
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_instrument_listing_ids"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+      
+    - name: "HAS_UNDERLYING_ASSET"
+      target_type: "Stock"
+      cardinality: "1:1"
+      relationship_label: "UNDERLYING"
+      expensive: false
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_future_underlying"
+        parameters:
+          - source_field: "underlyingAssetId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+
+  Bond:
+    - name: "HAS_LISTING"
+      target_type: "Listing"
+      cardinality: "1:many"
+      relationship_label: "LISTING"
+      expensive: false
+      fetch_config:
+        provider: "InstrumentDataProvider"
+        method: "get_instrument_listing_ids"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+      
+    - name: "HAS_ISSUER"
+      target_type: "InstrumentParty"
+      cardinality: "1:1"
+      relationship_label: "ISSUER"
+      expensive: false
+      fetch_config:
+        provider: "PartyDataProvider"
+        method: "get_instrument_issuer"
+        parameters:
+          - source_field: "instrumentId"
+            target_parameter: "instrument_id"
+      display_in_graph: true
+
+  Listing:
+    - name: "HAS_EXCHANGE"
+      target_type: "Exchange"
+      cardinality: "1:1"
+      relationship_label: "HAS"
+      expensive: false
+      fetch_config:
+        provider: "ExchangeDataProvider"
+        method: "get_exchange_by_listing"
+        parameters:
+          - source_field: "exchangeId"
+            target_parameter: "exchange_id"
+      display_in_graph: true
+
+  InstrumentParty:
+    - name: "HAS_ENTITY"
+      target_type: "Client"
+      cardinality: "1:1"
+      relationship_label: "HAS"
+      expensive: false
+      fetch_config:
+        provider: "PartyDataProvider"
+        method: "get_entity_by_party"
+        parameters:
+          - source_field: "clientId"
+            target_parameter: "client_id"
+      display_in_graph: true
+
+  Exchange:
+    # Exchanges typically don't have outbound relationships in this model
+    []
+
+  Client:
+    # Clients typically don't have outbound relationships in this model
+    []

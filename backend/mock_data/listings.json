@@ -1,0 +1,34 @@
+{
+  "listings": [
+    {
+      "tradingLineId": "A908908404",
+      "instrumentId": "A125989590",
+      "listing_type": "Trading Line",
+      "name": "AAPL NASDAQ",
+      "ric": "AAPL.O",
+      "bloombergTicker": "AAPL US",
+      "exchangeId": "NSDQ",
+      "status": "ACTIVE"
+    },
+    {
+      "tradingLineId": "A908908405",
+      "instrumentId": "A125989590",
+      "listing_type": "Trading Line",
+      "name": "AAPL NYSE",
+      "ric": "AAPL.N",
+      "bloombergTicker": "AAPL UW",
+      "exchangeId": "NYSE",
+      "status": "ACTIVE"
+    },
+    {
+      "tradingLineId": "A908908406",
+      "instrumentId": "A125989591",
+      "listing_type": "Trading Line",
+      "name": "MSFT NASDAQ",
+      "ric": "MSFT.O",
+      "bloombergTicker": "MSFT US",
+      "exchangeId": "NSDQ",
+      "status": "ACTIVE"
+    }
+  ]
+}
