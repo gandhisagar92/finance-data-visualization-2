@@ -91,7 +91,8 @@ def main():
         app = create_application()
 
         # Configure server
-        port = int(os.environ.get("PORT", 8888))
+        port = int(os.environ.get("PORT", 8000))
+        print(f"Listening on port {port}...")
         app.listen(port)
 
         print(f"Server started on http://localhost:{port}")
@@ -116,4 +117,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print("Starting application...")
     main()

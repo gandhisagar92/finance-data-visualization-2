@@ -42,28 +42,74 @@ relationships:
       tree_list_config:
         enabled: true
         columns:
-          - field: "instrumentId"
-            label: "Option ID"
+          - key: "instrumentId"
+            label: "Instrument ID"
+            width: 180
             sortable: true
-          - field: "optionType"
-            label: "Type"
-            filterable: true
-          - field: "strike"
+          - key: "name"
+            label: "Name"
+            width: 240
+            sortable: true
+          - key: "status"
+            label: "Status"
+            width: 120
+            sortable: true
+          - key: "isin"
+            label: "ISIN"
+            width: 140
+            sortable: true
+          - key: "postTradeId"
+            label: "PostTrade ID"
+            width: 140
+            sortable: true
+          - key: "strike_price"
             label: "Strike"
+            width: 100
             sortable: true
-          - field: "expirationDate"
+          - key: "contractSize"
+            label: "Contract Size"
+            width: 100
+            sortable: true
+          - key: "putOrCall"
+            label: "Put/Call"
+            width: 80
+            sortable: true
+          - key: "expirationDate"
             label: "Expiry"
+            width: 120
             sortable: true
-            filterable: true
+          - key: "exerciseStyle"
+            label: "Style"
+            width: 100
+            sortable: true
+          - key: "primaryTradingLine"
+            label: "Primary Trading Line"
+            width: 200
+            sortable: true
+          - key: "timingRule"
+            label: "Timing Rule"
+            width: 180
+            sortable: true
+        column_groups:
+          - group: "GIM Reference Data"
+            columns:
+              - "instrumentId"
+              - "name"
+              - "status"
+              - "isin"
+              - "postTradeId"
+              - "strike_price"
+              - "contractSize"
+              - "putOrCall"
+              - "expirationDate"
+              - "exerciseStyle"
+          - group: "Equities Reference Data"
+            columns:
+              - "primaryTradingLine"
+              - "timingRule"
         default_sort:
           field: "expirationDate"
           direction: "asc"
-        filters:
-          - field: "optionType"
-            type: "select"
-            options: ["Call", "Put"]
-          - field: "expirationDate"
-            type: "date_range"
 
   Option:
     - name: "HAS_LISTING"

@@ -165,10 +165,9 @@ class TreeBuilderHandler(BaseHandler):
             id_type = data['idType']
             id_value = data['idValue']
             
-            # Optional pagination and filtering
-            pagination = data.get('pagination', {})
-            page = pagination.get('page', 1)
-            page_size = pagination.get('pageSize', 50)
+            # Pagination and filtering parameters
+            page = data.get('page', 1)
+            page_size = data.get('size', 50)
             
             filters = data.get('filters', {})
             sort_by = data.get('sortBy')

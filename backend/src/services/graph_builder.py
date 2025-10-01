@@ -186,6 +186,7 @@ class GraphBuilder:
             "totalCount": self._get_expensive_relationship_count(
                 source_entity, relationship
             ),
+            "sourceEntityType": source_entity.entity_type,
             "sourceEntityId": source_entity.id,
             "relationshipName": relationship["name"],
             "targetType": relationship["target_type"],
