@@ -1,1 +1,7 @@
-# Empty file to make this directory a Python package
+"""
+Entity types package.
+"""
+
+from .entity_types import Entity
+
+__all__ = ['Entity']

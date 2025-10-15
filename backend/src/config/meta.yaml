@@ -1,0 +1,100 @@
+entities:
+  Instrument:
+    description: "Financial instruments"
+    specific_types:
+      - Stock
+      - Option
+      - Future
+      - Bond
+    id_types:
+      InstrumentId:
+        inputs:
+          - id: "instrumentId"
+            label: "Instrument ID"
+            kind: "text"
+            required: true
+            validation: "^[A-Z0-9]{6,12}$"
+      RIC:
+        inputs:
+          - id: "ric"
+            label: "RIC"
+            kind: "text"
+            required: true
+      ISIN:
+        inputs:
+          - id: "isin"
+            label: "ISIN"
+            kind: "text"
+            required: true
+      Economics:
+        inputs:
+          - id: "underlyingInstrumentId"
+            label: "Underlying Instrument ID"
+            kind: "text"
+            required: true
+          - id: "strike"
+            label: "Strike"
+            kind: "number"
+            required: true
+          - id: "contractSize"
+            label: "Contract Size"
+            kind: "number"
+            required: false
+          - id: "expirationDate"
+            label: "Expiration Date"
+            kind: "date"
+            required: true
+          - id: "callOrPut"
+            label: "Call or Put"
+            kind: "select"
+            options: ["Call", "Put"]
+            required: true
+
+  Account:
+    description: "Trading and settlement accounts"
+    specific_types:
+      - Account
+      - ClientAccount
+    id_types:
+      CAID:
+        inputs:
+          - id: "caid"
+            label: "CAID"
+            kind: "text"
+            required: true
+      CASSII:
+        inputs:
+          - id: "cassii"
+            label: "CASSII"
+            kind: "text"
+            required: true
+      SPN:
+        inputs:
+          - id: "spn"
+            label: "SPN"
+            kind: "text"
+            required: true
+
+  Client:
+    description: "Client entities"
+    specific_types:
+      - Client
+    id_types:
+      ECI: # JPM Party 1.0 Identifier
+        inputs:
+          - id: "eci"
+            label: "ECI"
+            kind: "text"
+            required: true
+      SPN:
+        inputs:
+          - id: "spn"
+            label: "SPN"
+            kind: "text"
+            required: true
+      EPI: # JPM Party 2.0 Identifier
+        inputs:
+          - id: "epi"
+            label: "EPI"
+            kind: "text"
+            required: true

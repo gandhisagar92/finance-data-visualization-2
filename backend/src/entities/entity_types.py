@@ -6,288 +6,155 @@ Each entity type represents a specific financial data object with its own proper
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional
 from datetime import datetime
+import re
 
 
-class BaseEntity(ABC):
+class Entity(ABC):
     """Base class for all entity types"""
 
-    def __init__(self, data: Dict[str, Any]):
+    def __init__(
+        self,
+        data: Dict[str, Any],
+        entity_type: str,
+        display_type: str = "graph-node",
+        **kwargs,
+    ):
         self.data = data
-        self.id = self._get_primary_id()
-        self.entity_type = self.__class__.__name__
+        self.entity_type = entity_type  # e.g., "Stock", "Listing", "Exchange", etc.
+        self.display_type = display_type  # e.g., "graph-node" or "list-row"
+        self.created_at = kwargs.get("created_at", datetime.now())
+        self.updated_at = kwargs.get("updated_at", datetime.now())
 
-    @abstractmethod
-    def _get_primary_id(self) -> str:
-        """Get the primary identifier for this entity"""
-        pass
+    def _apply_template(
+        self, template: Dict[str, Any], data: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """
+        Apply template to data, replacing ${field} placeholders with actual values.
+        Supports nested dictionaries and lists.
+        """
+        if isinstance(template, dict):
+            result = {}
+            for key, value in template.items():
+                # Handle special keys like "idValue.key" and "idValue.value"
+                if "${" in str(key):
+                    # Evaluate key template
+                    evaluated_key = self._replace_placeholders(key, data)
+                    result[evaluated_key] = self._apply_template(value, data)
+                else:
+                    result[key] = self._apply_template(value, data)
+            return result
+        elif isinstance(template, list):
+            return [self._apply_template(item, data) for item in template]
+        elif isinstance(template, str):
+            return self._replace_placeholders(template, data)
+        else:
+            return template
 
-    @abstractmethod
-    def to_node_dict(self) -> Dict[str, Any]:
-        """Convert entity to node representation for graph"""
-        pass
+    def _replace_placeholders(self, template_str: str, data: Dict[str, Any]) -> Any:
+        """Replace ${field} placeholders with actual values from data"""
+        if not isinstance(template_str, str) or "${" not in template_str:
+            return template_str
+
+        # Pattern to match ${field} or ${field:default_value}
+        pattern = r"\$\{([^}]+)\}"
+        matches = re.findall(pattern, template_str)
+
+        result = template_str
+        for match in matches:
+            # Check for default value
+            if ":" in match:
+                field_path, default = match.split(":", 1)
+            else:
+                field_path = match
+                default = None
+
+            # Get value from nested path (e.g., "idValue.key")
+            value = self._get_nested_value(data, field_path)
+
+            if value is None:
+                value = default if default is not None else ""
+
+            # Replace the placeholder
+            result = result.replace(
+                f"${{{match}}}", str(value) if value is not None else ""
+            )
+
+        # If result is still a template variable alone, return None
+        if result.strip() == "":
+            return None
+
+        return result
+
+    def _get_nested_value(self, data: Dict[str, Any], path: str) -> Any:
+        """Get value from nested dictionary using dot notation"""
+        keys = path.split(".")
+        value = data
+
+        for key in keys:
+            if isinstance(value, dict):
+                value = value.get(key)
+                if value is None:
+                    return None
+            else:
+                return None
+
+        return value
+
+    def to_graph_node_dict(self, entity_definition: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Convert entity to node representation for graph visualization.
+        Uses entity_definition template to transform data.
+        """
+        # Get the graph-node template
+        template = entity_definition.get("body", {}).get("graph-node", {})
+        header_template = entity_definition.get("header", {})
+        footer_template = entity_definition.get("footer", {})
+
+        # Apply templates
+        result = {}
+        result.update(self._apply_template(header_template, self.data))
+        result.update(self._apply_template(template, self.data))
+        result.update(self._apply_template(footer_template, self.data))
+
+        # Remove None values
+        result = {k: v for k, v in result.items() if v is not None}
+
+        return result
+
+    def to_tree_list_row_dict(
+        self, entity_definition: Dict[str, Any]
+    ) -> Dict[str, Any]:
+        """
+        Convert entity to list row representation for tree view.
+        Uses entity_definition template to transform data.
+        """
+        # Get the list-row template
+        template = entity_definition.get("body", {}).get("list-row", {})
+        header_template = entity_definition.get("header", {})
+        footer_template = entity_definition.get("footer", {})
+
+        # Apply templates
+        result = {}
+        result.update(self._apply_template(header_template, self.data))
+
+        # Process columns
+        columns_template = template.get("columns", [])
+        columns = []
+        for col_template in columns_template:
+            col = self._apply_template(col_template, self.data)
+            if col.get("value") is not None:  # Only include if value exists
+                columns.append(col)
+
+        if columns:
+            result["columns"] = columns
+
+        result.update(self._apply_template(footer_template, self.data))
+
+        # Remove None values
+        result = {k: v for k, v in result.items() if v is not None}
+
+        return result
 
     def get_field_value(self, field_name: str) -> Any:
-        """Get field value from entity data"""
+        """Get value of a specific field from entity data"""
         return self.data.get(field_name)
-
-
-class Stock(BaseEntity):
-    """Stock entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("instrumentId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": self.data.get("instrument_type", "Stock"),
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Instrument Id": self.data.get("instrumentId"),
-                "ISIN": self.data.get("isin"),
-                "Primary Trading Line": self.data.get("primaryTradingLine"),
-                "Sector": self.data.get("sector"),
-            },
-            "refDataType": "Stock",
-            "idType": "instrumentId",
-            "idValue": {"instrumentId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-    @property
-    def instrument_id(self) -> str:
-        return self.data.get("instrumentId", "")
-
-    @property
-    def name(self) -> str:
-        return self.data.get("name", "")
-
-    @property
-    def isin(self) -> str:
-        return self.data.get("isin", "")
-
-
-class Option(BaseEntity):
-    """Option entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("instrumentId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": self.data.get("instrument_type", "Option"),
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Instrument Id": self.data.get("instrumentId"),
-                "Option Type": self.data.get("optionType"),
-                "Strike": self.data.get("strike"),
-                "Expiration Date": self.data.get("expirationDate"),
-                "Underlying": self.data.get("underlyingInstrumentId"),
-            },
-            "refDataType": "Option",
-            "idType": "instrumentId",
-            "idValue": {"instrumentId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-    @property
-    def underlying_instrument_id(self) -> str:
-        return self.data.get("underlyingInstrumentId", "")
-
-
-class Future(BaseEntity):
-    """Future contract entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("instrumentId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": self.data.get("instrument_type", "Future"),
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Instrument Id": self.data.get("instrumentId"),
-                "Underlying Asset": self.data.get("underlyingAsset"),
-                "Expiration Date": self.data.get("expirationDate"),
-                "Contract Size": self.data.get("contractSize"),
-                "Settlement Type": self.data.get("settlementType"),
-            },
-            "refDataType": "Future",
-            "idType": "instrumentId",
-            "idValue": {"instrumentId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-    @property
-    def underlying_asset_id(self) -> str:
-        return self.data.get("underlyingAssetId", "")
-
-    @property
-    def expiration_date(self) -> str:
-        return self.data.get("expirationDate", "")
-
-
-class Bond(BaseEntity):
-    """Bond entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("instrumentId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": self.data.get("instrument_type", "Bond"),
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Instrument Id": self.data.get("instrumentId"),
-                "ISIN": self.data.get("isin"),
-                "Coupon Rate": self.data.get("couponRate"),
-                "Maturity Date": self.data.get("maturityDate"),
-                "Credit Rating": self.data.get("creditRating"),
-            },
-            "refDataType": "Bond",
-            "idType": "instrumentId",
-            "idValue": {"instrumentId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-
-class Listing(BaseEntity):
-    """Listing/Trading Line entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("tradingLineId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": "Trading Line",
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Trading Line Id": self.data.get("tradingLineId"),
-                "RIC": self.data.get("ric"),
-                "BBG Ticker": self.data.get("bloombergTicker"),
-                "Exchange": self.data.get("exchangeId"),
-            },
-            "refDataType": "Listing",
-            "idType": "tradingLineId",
-            "idValue": {"tradingLineId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-
-class Exchange(BaseEntity):
-    """Exchange entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("exchangeId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": self.data.get("exchangeCode", ""),
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Settlement Days": self.data.get("settlementDays"),
-                "Venue ID": self.data.get("venueId"),
-                "Currency": self.data.get("currency"),
-            },
-            "refDataType": "Exchange",
-            "idType": "exchangeId",
-            "idValue": {"exchangeId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-
-class InstrumentParty(BaseEntity):
-    """Instrument Party entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("instrumentPartyId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": "Instrument Party",
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "IPARTY": self.data.get("instrumentPartyId"),
-                "ECI": self.data.get("eci"),
-                "Entity Type": self.data.get("entityType"),
-            },
-            "refDataType": "InstrumentParty",
-            "idType": "instrumentPartyId",
-            "idValue": {"instrumentPartyId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-
-class Client(BaseEntity):
-    """Client/Party entity type"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("clientId", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": "Client",
-            "titleLine2": self.data.get("name", ""),
-            "status": self.data.get("status", "UNKNOWN"),
-            "additionalLines": {
-                "Client ID": self.data.get("clientId"),
-                "ECI": self.data.get("eci"),
-                "LEI": self.data.get("lei"),
-                "Client Type": self.data.get("clientType"),
-            },
-            "refDataType": "Client",
-            "idType": "clientId",
-            "idValue": {"clientId": self.id},
-            "asOf": datetime.now().isoformat(),
-        }
-
-
-class TreeListNode(BaseEntity):
-    """Special node type for expensive relationships displayed as tree-list"""
-
-    def _get_primary_id(self) -> str:
-        return self.data.get("id", "")
-
-    def to_node_dict(self) -> Dict[str, Any]:
-        return {
-            "id": self.id,
-            "titleLine1": self.data.get("titleLine1", ""),
-            "titleLine2": self.data.get("titleLine2", ""),
-            "status": self.data.get("status", "ACTIVE"),
-            "additionalLines": {"Total Count": str(self.data.get("totalCount", 0))},
-            "refDataType": self.data.get("targetType", ""),
-            "idType": "treeList",
-            "idValue": {
-                "sourceEntityType": self.data.get("sourceEntityType"),
-                "sourceEntityId": self.data.get("sourceEntityId"),
-                "relationshipName": self.data.get("relationshipName"),
-            },
-            "asOf": datetime.now().isoformat(),
-            "displayType": "tree-list",
-        }
-
-    @property
-    def source_entity_id(self) -> str:
-        return self.data.get("sourceEntityId", "")
-
-    @property
-    def relationship_name(self) -> str:
-        return self.data.get("relationshipName", "")
-
-    @property
-    def target_type(self) -> str:
-        return self.data.get("targetType", "")

@@ -1,0 +1,255 @@
+{
+  "clients": [
+    {
+      "entityId": "INST-Entity-3890",
+      "name": "Apple Inc.",
+      "eci": "ECI-100",
+      "spn": "SPN-100",
+      "casId": "CAS-100",
+      "lei": "LEI1000000001",
+      "country": "US",
+      "status": "ACTIVE",
+      "goldenEntityParties": [
+        {
+          "eci": "ECI-200",
+          "spn": "SPN-200",
+          "casId": "CAS-200",
+          "lei": "LEI1000000002",
+          "country": "GB",
+          "status": "ACTIVE"
+        },
+        {
+          "eci": "ECI-201",
+          "spn": "SPN-201",
+          "casId": "CAS-201",
+          "lei": "LEI1000000003",
+          "country": "DE",
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    {
+      "entityId": "INST-Entity-1",
+      "name": "Microsoft Corp.",
+      "eci": "ECI-101",
+      "spn": "SPN-101",
+      "casId": "CAS-101",
+      "lei": "LEI1000000004",
+      "country": "US",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-12",
+      "name": "Microsoft Corp.",
+      "eci": "ECI-101",
+      "spn": "SPN-101",
+      "casId": "CAS-101",
+      "lei": "LEI1000000004",
+      "country": "US",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-3",
+      "name": "Toyota Motor Corp.",
+      "eci": "ECI-102",
+      "spn": "SPN-102",
+      "casId": "CAS-102",
+      "lei": "LEI1000000005",
+      "country": "JP",
+      "status": "ACTIVE",
+      "goldenEntityParties": [
+        {
+          "eci": "ECI-202",
+          "spn": "SPN-202",
+          "casId": "CAS-202",
+          "lei": "LEI1000000006",
+          "country": "JP",
+          "status": "INACTIVE"
+        }
+      ]
+    },
+    {
+      "entityId": "INST-Entity-19",
+      "name": "HSBC Holdings Plc",
+      "eci": "ECI-103",
+      "spn": "SPN-103",
+      "casId": "CAS-103",
+      "lei": "LEI1000000007",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-4",
+      "name": "Samsung Electronics",
+      "eci": "ECI-104",
+      "spn": "SPN-104",
+      "casId": "CAS-104",
+      "lei": "LEI1000000008",
+      "country": "KR",
+      "status": "ACTIVE",
+      "goldenEntityParties": [
+        {
+          "eci": "ECI-203",
+          "spn": "SPN-203",
+          "casId": "CAS-203",
+          "lei": "LEI1000000009",
+          "country": "KR",
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    {
+      "entityId": "INST-Entity-9",
+      "name": "BNP Paribas",
+      "eci": "ECI-106",
+      "spn": "SPN-106",
+      "casId": "CAS-106",
+      "lei": "LEI1000000011",
+      "country": "FR",
+      "status": "ACTIVE",
+      "goldenEntityParties": [
+        {
+          "eci": "ECI-204",
+          "spn": "SPN-204",
+          "casId": "CAS-204",
+          "lei": "LEI1000000012",
+          "country": "FR",
+          "status": "INACTIVE"
+        }
+      ]
+    },
+    {
+      "entityId": "INST-Entity-16",
+      "name": "Tata Consultancy Services",
+      "eci": "ECI-107",
+      "spn": "SPN-107",
+      "casId": "CAS-107",
+      "lei": "LEI1000000013",
+      "country": "IN",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-17",
+      "name": "Alibaba Group",
+      "eci": "ECI-108",
+      "spn": "SPN-108",
+      "casId": "CAS-108",
+      "lei": "LEI1000000014",
+      "country": "CN",
+      "status": "ACTIVE",
+      "goldenEntityParties": [
+        {
+          "eci": "ECI-205",
+          "spn": "SPN-205",
+          "casId": "CAS-205",
+          "lei": "LEI1000000015",
+          "country": "CN",
+          "status": "ACTIVE"
+        }
+      ]
+    },
+    {
+      "entityId": "INST-Entity-2",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-10",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-15",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-5",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-14",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-11",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-18",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-6",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    },
+    {
+      "entityId": "INST-Entity-13",
+      "name": "Vodafone Group Plc",
+      "eci": "ECI-109",
+      "spn": "SPN-109",
+      "casId": "CAS-109",
+      "lei": "LEI1000000016",
+      "country": "GB",
+      "status": "ACTIVE",
+      "goldenEntityParties": []
+    }
+  ]
+}

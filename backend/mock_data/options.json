@@ -1,0 +1,1328 @@
+{
+      "options": [
+        {
+          "instrumentId": "OPT-216739",
+          "version": 29,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2023-07-22T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Feb-16-2028 C 150.0",
+          "derivedName": "STK-100 CALL SEK 150 16/Feb/2028",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "AJI0Y6DPBHSA",
+          "cusip": "HXTHV3A3Z",
+          "postTradeId": "p-opt-mf8mdd4v",
+          "contributor": "OCC",
+          "bloombergldUnique": "EO316498896198079",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 150,
+              "currency": "SEK",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 150
+            },
+            "putOrCall": "C",
+            "expirationDate": "2028-02-16",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "02/2028",
+            "occSymbol": "STK 280216C00015000",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-200",
+              "name": "EUOPT",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1001",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XWEX",
+              "currency": "SEK",
+              "exchangeTicker": "100280216C15000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 02/16/28C150",
+              "bloombergTicker": "STK-100 XWEX 02/16/28 C150 Equity",
+              "bloombergExchange": "XWEX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-183667",
+          "version": 24,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2022-06-08T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Apr-16-2028 C 110.0",
+          "derivedName": "STK-100 CALL JPY 110 16/Apr/2028",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "45NQ4FMYZYCW",
+          "cusip": "TIQJ7YHL1",
+          "postTradeId": "p-opt-c32oc6uz",
+          "contributor": "ISE",
+          "bloombergldUnique": "EO395822482369128",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 110,
+              "currency": "JPY",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 107
+            },
+            "putOrCall": "C",
+            "expirationDate": "2028-04-16",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "04/2028",
+            "occSymbol": "STK 280416C00011000",
+            "frequency": "MONTHLY",
+            "product": {
+              "productId": "PROD-300",
+              "name": "FLEX",
+              "type": "FLEX",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1002",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XBOX",
+              "currency": "JPY",
+              "exchangeTicker": "100280416C11000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 04/16/28C110",
+              "bloombergTicker": "STK-100 XBOX 04/16/28 C110 Equity",
+              "bloombergExchange": "XBOX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-634277",
+          "version": 16,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2025-06-22T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Jun-26-2026 C 105.0",
+          "derivedName": "STK-100 CALL AUD 105 26/Jun/2026",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "R14FFYVNVQJT",
+          "cusip": "7YE511MKF",
+          "postTradeId": "p-opt-azz81sdw",
+          "contributor": "NASDAQ",
+          "bloombergldUnique": "EO446229368736557",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 105,
+              "currency": "AUD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 104
+            },
+            "putOrCall": "C",
+            "expirationDate": "2026-06-26",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "06/2026",
+            "occSymbol": "STK 260626C00010500",
+            "frequency": "WEEKLY",
+            "product": {
+              "productId": "PROD-300",
+              "name": "FLEX",
+              "type": "FLEX",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "CA"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1003",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XNYO",
+              "currency": "AUD",
+              "exchangeTicker": "100260626C10500",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 06/26/26C105",
+              "bloombergTicker": "STK-100 XNYO 06/26/26 C105 Equity",
+              "bloombergExchange": "XNYO"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-189814",
+          "version": 24,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2022-05-19T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Jun-21-2027 C 75.0",
+          "derivedName": "STK-100 CALL GBP 75 21/Jun/2027",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "039TEX8FSV87",
+          "cusip": "1YZOYN6QI",
+          "postTradeId": "p-opt-catvazcc",
+          "contributor": "EUREX",
+          "bloombergldUnique": "EO632178987555651",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 75,
+              "currency": "GBP",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 74
+            },
+            "putOrCall": "C",
+            "expirationDate": "2027-06-21",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "06/2027",
+            "occSymbol": "STK 270621C00007500",
+            "frequency": "MONTHLY",
+            "product": {
+              "productId": "PROD-200",
+              "name": "EUOPT",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1004",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XNYO",
+              "currency": "GBP",
+              "exchangeTicker": "100270621C07500",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 06/21/27C75",
+              "bloombergTicker": "STK-100 XNYO 06/21/27 C75 Equity",
+              "bloombergExchange": "XNYO"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-201639",
+          "version": 10,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2023-03-18T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Dec-28-2025 P 80.0",
+          "derivedName": "STK-100 PUT HKD 80 28/Dec/2025",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "XMO5BXXC02DG",
+          "cusip": "TFGQ5C34D",
+          "postTradeId": "p-opt-xtad1ior",
+          "contributor": "CBOE",
+          "bloombergldUnique": "EO725741444833678",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 80,
+              "currency": "HKD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 77
+            },
+            "putOrCall": "P",
+            "expirationDate": "2025-12-28",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "12/2025",
+            "occSymbol": "STK 251228P00008000",
+            "frequency": "WEEKLY",
+            "product": {
+              "productId": "PROD-200",
+              "name": "EUOPT",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "DE"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1005",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XWEX",
+              "currency": "HKD",
+              "exchangeTicker": "100251228P08000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 12/28/25P80",
+              "bloombergTicker": "STK-100 XWEX 12/28/25 P80 Equity",
+              "bloombergExchange": "XWEX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-161324",
+          "version": 30,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2023-08-17T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Jan-27-2026 P 50.0",
+          "derivedName": "STK-100 PUT GBP 50 27/Jan/2026",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "UT0CVS4F8CGV",
+          "cusip": "YIE6IVWPV",
+          "postTradeId": "p-opt-s7hzioyk",
+          "contributor": "OCC",
+          "bloombergldUnique": "EO177454928531585",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 50,
+              "currency": "GBP",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 49
+            },
+            "putOrCall": "P",
+            "expirationDate": "2026-01-27",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "01/2026",
+            "frequency": "MONTHLY",
+            "product": {
+              "productId": "PROD-300",
+              "name": "FLEX",
+              "type": "FLEX",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1006",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XISX",
+              "currency": "GBP",
+              "exchangeTicker": "100260127P05000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 01/27/26P50",
+              "bloombergTicker": "STK-100 XISX 01/27/26 P50 Equity",
+              "bloombergExchange": "XISX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-974244",
+          "version": 18,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2025-05-19T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Jan-17-2028 C 150.0",
+          "derivedName": "STK-100 CALL GBP 150 17/Jan/2028",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "TK93TYT7D5J6",
+          "cusip": "0FKHMY4SJ",
+          "postTradeId": "p-opt-6bw3bme9",
+          "bloombergldUnique": "EO515700584236267",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 150,
+              "currency": "GBP",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 149
+            },
+            "putOrCall": "C",
+            "expirationDate": "2028-01-17",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "01/2028",
+            "occSymbol": "STK 280117C00015000",
+            "frequency": "WEEKLY",
+            "product": {
+              "productId": "PROD-300",
+              "name": "FLEX",
+              "type": "FLEX",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "US"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1007",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XOPS",
+              "currency": "GBP",
+              "exchangeTicker": "100280117C15000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 01/17/28C150",
+              "bloombergTicker": "STK-100 XOPS 01/17/28 C150 Equity",
+              "bloombergExchange": "XOPS"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-482364",
+          "version": 28,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2025-03-11T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Sep-24-2026 C 120.0",
+          "derivedName": "STK-100 CALL CAD 120 24/Sep/2026",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "6246HID25OWF",
+          "cusip": "75935A0L7",
+          "postTradeId": "p-opt-253j2d54",
+          "contributor": "OPRA",
+          "bloombergldUnique": "EO970688512936784",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 120,
+              "currency": "CAD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 118
+            },
+            "putOrCall": "C",
+            "expirationDate": "2026-09-24",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "09/2026",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-100",
+              "name": "APP",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "CA"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1008",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XISX",
+              "currency": "CAD",
+              "exchangeTicker": "100260924C12000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 09/24/26C120",
+              "bloombergTicker": "STK-100 XISX 09/24/26 C120 Equity",
+              "bloombergExchange": "XISX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-812526",
+          "version": 5,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2024-07-04T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Apr-22-2027 C 150.0",
+          "derivedName": "STK-100 CALL SGD 150 22/Apr/2027",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "9T7E8G8JDP0L",
+          "cusip": "VSNUJZA7T",
+          "postTradeId": "p-opt-z0yncxll",
+          "contributor": "CBOE",
+          "bloombergldUnique": "EO848644670267134",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 150,
+              "currency": "SGD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 147
+            },
+            "putOrCall": "C",
+            "expirationDate": "2027-04-22",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "04/2027",
+            "occSymbol": "STK 270422C00015000",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-200",
+              "name": "EUOPT",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "CA"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1009",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XISX",
+              "currency": "SGD",
+              "exchangeTicker": "100270422C15000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 04/22/27C150",
+              "bloombergTicker": "STK-100 XISX 04/22/27 C150 Equity",
+              "bloombergExchange": "XISX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-525800",
+          "version": 25,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2023-03-14T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Sep-19-2027 C 120.0",
+          "derivedName": "STK-100 CALL EUR 120 19/Sep/2027",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "TAKPUXQPHR62",
+          "cusip": "GDSWM31YI",
+          "postTradeId": "p-opt-hair4cow",
+          "contributor": "EUREX",
+          "bloombergldUnique": "EO298028997032199",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 120,
+              "currency": "EUR",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 117
+            },
+            "putOrCall": "C",
+            "expirationDate": "2027-09-19",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "09/2027",
+            "occSymbol": "STK 270919C00012000",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-100",
+              "name": "APP",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1010",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XWEX",
+              "currency": "EUR",
+              "exchangeTicker": "100270919C12000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 09/19/27C120",
+              "bloombergTicker": "STK-100 XWEX 09/19/27 C120 Equity",
+              "bloombergExchange": "XWEX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-578634",
+          "version": 27,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2023-03-24T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Oct-24-2026 C 75.0",
+          "derivedName": "STK-100 CALL JPY 75 24/Oct/2026",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "EQTUL1P36P6Q",
+          "cusip": "F5Q14J1RI",
+          "postTradeId": "p-opt-pzim6cfn",
+          "contributor": "NASDAQ",
+          "bloombergldUnique": "EO757614338872831",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 75,
+              "currency": "JPY",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 75
+            },
+            "putOrCall": "C",
+            "expirationDate": "2026-10-24",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "10/2026",
+            "occSymbol": "STK 261024C00007500",
+            "frequency": "MONTHLY",
+            "product": {
+              "productId": "PROD-200",
+              "name": "EUOPT",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "US"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1011",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XMIO",
+              "currency": "JPY",
+              "exchangeTicker": "100261024C07500",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 10/24/26C75",
+              "bloombergTicker": "STK-100 XMIO 10/24/26 C75 Equity",
+              "bloombergExchange": "XMIO"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-413118",
+          "version": 21,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2025-03-13T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Feb-21-2027 P 110.0",
+          "derivedName": "STK-100 PUT JPY 110 21/Feb/2027",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "148P0TVHHPBM",
+          "cusip": "YOFQEWAOU",
+          "postTradeId": "p-opt-axeqbnhl",
+          "bloombergldUnique": "EO145327589139619",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 110,
+              "currency": "JPY",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 110
+            },
+            "putOrCall": "P",
+            "expirationDate": "2027-02-21",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "02/2027",
+            "occSymbol": "STK 270221P00011000",
+            "frequency": "WEEKLY",
+            "product": {
+              "productId": "PROD-100",
+              "name": "APP",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "US"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1012",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XISX",
+              "currency": "JPY",
+              "exchangeTicker": "100270221P11000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 02/21/27P110",
+              "bloombergTicker": "STK-100 XISX 02/21/27 P110 Equity",
+              "bloombergExchange": "XISX"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-350132",
+          "version": 27,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2022-11-01T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Jul-15-2028 P 110.0",
+          "derivedName": "STK-100 PUT CHF 110 15/Jul/2028",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "EYUHZ1GV0E38",
+          "cusip": "DALY8OZCY",
+          "postTradeId": "p-opt-wd14ve92",
+          "contributor": "NASDAQ",
+          "bloombergldUnique": "EO588102011639907",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 110,
+              "currency": "CHF",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 108
+            },
+            "putOrCall": "P",
+            "expirationDate": "2028-07-15",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "07/2028",
+            "occSymbol": "STK 280715P00011000",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-100",
+              "name": "APP",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1013",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XMIO",
+              "currency": "CHF",
+              "exchangeTicker": "100280715P11000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 07/15/28P110",
+              "bloombergTicker": "STK-100 XMIO 07/15/28 P110 Equity",
+              "bloombergExchange": "XMIO"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-284692",
+          "version": 26,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2025-06-26T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Apr-16-2028 P 150.0",
+          "derivedName": "STK-100 PUT HKD 150 16/Apr/2028",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "08J3TRP0J43D",
+          "cusip": "5IQVNB4GH",
+          "postTradeId": "p-opt-2m5zja8d",
+          "contributor": "ISE",
+          "bloombergldUnique": "EO431279817136174",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 150,
+              "currency": "HKD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 149
+            },
+            "putOrCall": "P",
+            "expirationDate": "2028-04-16",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "04/2028",
+            "occSymbol": "STK 280416P00015000",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-300",
+              "name": "FLEX",
+              "type": "FLEX",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "GB"
+          },
+          "settlement": {
+            "deliverableType": "CASH",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1014",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XPHO",
+              "currency": "HKD",
+              "exchangeTicker": "100280416P15000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 04/16/28P150",
+              "bloombergTicker": "STK-100 XPHO 04/16/28 P150 Equity",
+              "bloombergExchange": "XPHO"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-796212",
+          "version": 16,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2022-11-24T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 May-27-2026 P 250.0",
+          "derivedName": "STK-100 PUT CAD 250 27/May/2026",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "URTP0LZJJEGE",
+          "cusip": "T1GHR09SK",
+          "postTradeId": "p-opt-dgigatj9",
+          "contributor": "OCC",
+          "bloombergldUnique": "EO483602600874047",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 250,
+              "currency": "CAD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 249
+            },
+            "putOrCall": "P",
+            "expirationDate": "2026-05-27",
+            "exerciseStyle": "American",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "05/2026",
+            "occSymbol": "STK 260527P00025000",
+            "frequency": "MONTHLY",
+            "product": {
+              "productId": "PROD-200",
+              "name": "EUOPT",
+              "type": "STAN",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "JP"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1015",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XNYO",
+              "currency": "CAD",
+              "exchangeTicker": "100260527P25000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 05/27/26P250",
+              "bloombergTicker": "STK-100 XNYO 05/27/26 P250 Equity",
+              "bloombergExchange": "XNYO"
+            }
+          ]
+        },
+        {
+          "instrumentId": "OPT-962050",
+          "version": 23,
+          "lastUpdatedTimestamp": "2025-08-30T00:46:52",
+          "createdTimestamp": "2023-12-30T00:46:52",
+          "status": "ACTIVE",
+          "isActive": true,
+          "modelClass": "OPTION",
+          "name": "STK-100 Sep-29-2025 C 110.0",
+          "derivedName": "STK-100 CALL CAD 110 29/Sep/2025",
+          "assetClassifications": {
+            "bloomberg": {
+              "marketSector": "Equity",
+              "securityType": "Equity Option"
+            }
+          },
+          "isin": "CRUYF38DIUOV",
+          "cusip": "W1N6KVPUC",
+          "postTradeId": "p-opt-8d1wjcit",
+          "contributor": "ISE",
+          "bloombergldUnique": "EO180141744825762",
+          "contractSize": 100,
+          "tickSize": 0.01,
+          "tickValue": 1,
+          "option": {
+            "strike": {
+              "price": 110,
+              "currency": "CAD",
+              "multiplier": 100,
+              "isOriginalCurrencyMinor": false,
+              "gmiPrice": 109
+            },
+            "putOrCall": "C",
+            "expirationDate": "2025-09-29",
+            "exerciseStyle": "European",
+            "contractSize": 100,
+            "tickSize": 0.01,
+            "tickValue": 1,
+            "contractMonth": "09/2025",
+            "occSymbol": "STK 250929C00011000",
+            "frequency": "QUARTERLY",
+            "product": {
+              "productId": "PROD-300",
+              "name": "FLEX",
+              "type": "FLEX",
+              "category": "Equity",
+              "status": "ACTIVE",
+              "isActive": true,
+              "bloombergCode": "BBG Equity"
+            }
+          },
+          "issuance": {
+            "country": "CA"
+          },
+          "settlement": {
+            "deliverableType": "PHYSICAL",
+            "isSettledOnOpenPrice": false
+          },
+          "underlyings": [
+            {
+              "instrumentId": "STK-100",
+              "tradingLineId": null,
+              "allocatedPercentage": 100,
+              "quantity": {
+                "amount": 100
+              }
+            }
+          ],
+          "tradingLines": [
+            {
+              "tradingLineId": "OPT-TL-1016",
+              "status": "ACTIVE",
+              "isActive": true,
+              "exchangeId": "XBOX",
+              "currency": "CAD",
+              "exchangeTicker": "100250929C11000",
+              "tradingSession": "SINGLE",
+              "bpod": "STK-100 09/29/25C110",
+              "bloombergTicker": "STK-100 XBOX 09/29/25 C110 Equity",
+              "bloombergExchange": "XBOX"
+            }
+          ]
+        }
+    ]
+}

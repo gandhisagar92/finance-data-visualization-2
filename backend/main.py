@@ -1,5 +1,5 @@
 """
-Main application entry point for the Financial Data Relationship Explorer.
+Main application entry point.
 """
 
 import tornado.web
@@ -10,13 +10,7 @@ import os
 # Add src directory to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
 
-from config.config_manager import ConfigurationManager
-from data_providers.registry import DataProviderRegistry
-from cache.cache_manager import CacheManager
-from services.graph_builder import GraphBuilder
-from services.graph_service import GraphService
-from services.tree_service import TreeService
-from api.handlers import (
+from src.api.handlers import (
     MetadataHandler,
     GraphBuilderHandler,
     NodeExpandHandler,
@@ -25,97 +19,83 @@ from api.handlers import (
     TreeExpandHandler,
     TypeResolveHandler,
 )
+from src.config.config_manager import ConfigurationManager
+from src.data_providers.provider_registry import DataProviderRegistry
+from services.graph_builder import GraphBuilder
+from services.graph_service import GraphService
+from services.tree_service import TreeService
+from cache.cache_manager import CacheManager
+from cache.memory_cache import MemoryCache
 
 
-def create_application():
+def make_app():
     """Create and configure the Tornado application"""
 
-    # Initialize configuration manager
-    config_dir = os.path.join(os.path.dirname(__file__), "src", "config")
-    config_manager = ConfigurationManager(config_dir)
-
-    # Initialize cache manager
-    cache_manager = CacheManager()
-
-    # Initialize data provider registry
-    data_provider_registry = DataProviderRegistry()
-
-    # Initialize providers with configuration
-    provider_configs = {
-        "InstrumentDataProvider": {},
-        "ListingDataProvider": {},
-        "ExchangeDataProvider": {},
-        "PartyDataProvider": {},
-    }
-    data_provider_registry.initialize_all_providers(provider_configs, cache_manager)
-
-    # Get all providers
-    data_providers = data_provider_registry.get_all_providers()
+    # Initialize core components
+    config_manager = ConfigurationManager()
+    provider_registry = DataProviderRegistry()
+    data_providers = provider_registry.get_all_providers()
 
     # Initialize services
     graph_builder = GraphBuilder(config_manager, data_providers)
+    cache_manager = CacheManager(MemoryCache())
     graph_service = GraphService(graph_builder, cache_manager)
     tree_service = TreeService(data_providers, config_manager)
 
-    # Define URL routes
-    handlers = [
-        (r"/api/meta", MetadataHandler, {"config_manager": config_manager}),
-        (r"/api/graph/build", GraphBuilderHandler, {"graph_service": graph_service}),
-        (
-            r"/api/graph/node/expand",
-            NodeExpandHandler,
-            {"graph_service": graph_service},
-        ),
-        (
-            r"/api/graph/node/payload",
-            NodePayloadHandler,
-            {"data_providers": data_providers},
-        ),
-        (r"/api/build/tree", TreeBuilderHandler, {"tree_service": tree_service}),
-        (r"/api/tree/item/expand", TreeExpandHandler, {"tree_service": tree_service}),
-        (r"/api/resolve-type", TypeResolveHandler, {"data_providers": data_providers}),
-    ]
-
-    # Create application
-    settings = {"debug": True, "autoreload": True}
-
-    return tornado.web.Application(handlers, **settings)
+    # Define routes
+    return tornado.web.Application(
+        [
+            (r"/api/meta", MetadataHandler, dict(config_manager=config_manager)),
+            (
+                r"/api/graph/build",
+                GraphBuilderHandler,
+                dict(graph_service=graph_service),
+            ),
+            (
+                r"/api/graph/node/expand",
+                NodeExpandHandler,
+                dict(graph_service=graph_service),
+            ),
+            (
+                r"/api/graph/node/payload",
+                NodePayloadHandler,
+                dict(data_providers=data_providers),
+            ),
+            (r"/api/tree/build", TreeBuilderHandler, dict(tree_service=tree_service)),
+            (
+                r"/api/tree/item/expand",
+                TreeExpandHandler,
+                dict(tree_service=tree_service),
+            ),
+            (
+                r"/api/type/resolve",
+                TypeResolveHandler,
+                dict(data_providers=data_providers),
+            ),
+        ],
+        debug=True,
+    )
 
 
 def main():
-    """Main function to start the server"""
-    print("Starting Financial Data Relationship Explorer...")
+    """Main application entry point"""
+    app = make_app()
+    port = 8888
 
-    try:
-        # Create application
-        app = create_application()
+    print(f"Starting Financial Data Relationship Explorer on port {port}...")
+    print(f"API endpoints:")
+    print(f"  - GET  http://localhost:{port}/api/meta")
+    print(f"  - POST http://localhost:{port}/api/graph/build")
+    print(f"  - POST http://localhost:{port}/api/graph/node/expand")
+    print(f"  - GET  http://localhost:{port}/api/graph/node/payload")
+    print(f"  - POST http://localhost:{port}/api/tree/build")
+    print(f"  - POST http://localhost:{port}/api/tree/item/expand")
+    print(f"  - GET  http://localhost:{port}/api/type/resolve")
+    print(f"\nPress Ctrl+C to stop the server")
 
-        # Configure server
-        port = int(os.environ.get("PORT", 8000))
-        print(f"Listening on port {port}...")
-        app.listen(port)
-
-        print(f"Server started on http://localhost:{port}")
-        print("Available endpoints:")
-        print(f"  GET  http://localhost:{port}/api/meta")
-        print(f"  POST http://localhost:{port}/api/graph/build")
-        print(f"  POST http://localhost:{port}/api/graph/node/expand")
-        print(f"  GET  http://localhost:{port}/api/graph/node/payload")
-        print(f"  POST http://localhost:{port}/api/build/tree")
-        print(f"  POST http://localhost:{port}/api/tree/item/expand")
-        print(f"  GET  http://localhost:{port}/api/resolve-type")
-        print("\nPress Ctrl+C to stop the server")
-
-        # Start the server
-        tornado.ioloop.IOLoop.current().start()
-
-    except KeyboardInterrupt:
-        print("\nServer stopped by user")
-    except Exception as e:
-        print(f"Error starting server: {e}")
-        sys.exit(1)
+    app.listen(port)
+    tornado.ioloop.IOLoop.current().start()
 
 
 if __name__ == "__main__":
-    print("Starting application...")
     main()

@@ -1,63 +1,86 @@
 """
 Exchange data provider implementation.
-Handles data retrieval for Exchange entities.
 """
 
-from .base_provider import BaseDataProvider
-from .cached_provider_mixin import CachedProviderMixin
-from entities.entity_types import BaseEntity
 from typing import List, Dict, Any, Optional, Tuple
+from .base_provider import BaseDataProvider
+from entities.entity_types import Entity
 import json
 import os
 
 
-class ExchangeDataProvider(CachedProviderMixin, BaseDataProvider):
-    """Data provider for exchange-related entities"""
-    
+class ExchangeDataProvider(BaseDataProvider):
+    """Data provider for Exchange entities"""
+
     def __init__(self, config: Dict[str, Any]):
-        super().__init__(config=config)
-        self.mock_data = self._load_mock_data()
-    
-    def _load_mock_data(self) -> Dict[str, Any]:
-        """Load mock data from JSON files"""
-        current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(os.path.dirname(current_dir))
-        mock_data_path = os.path.join(project_root, 'mock_data', 'exchanges.json')
-        
+        super().__init__(config)
+        self._data = self._load_data()
+        print(f"ExchangeDataProvider initialized with {len(self._data)} exchanges.")
+
+    def _load_data(self) -> List[Dict[str, Any]]:
+        """Load exchange data from JSON file"""
+        current_dir = os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        )
+        data_path = os.path.join(current_dir, "mock_data", "exchanges.json")
+
         try:
-            with open(mock_data_path, 'r') as f:
-                return json.load(f)
+            with open(data_path, "r") as f:
+                data = json.load(f)
+                return data.get("exchanges", [])
         except FileNotFoundError:
-            return {'exchanges': []}
-    
-    def get_entity_by_id(self, entity_type: str, id_type: str, 
-                        id_value: Dict[str, Any], 
-                        parent_node: Optional[BaseEntity] = None, 
-                        **kwargs) -> Optional[BaseEntity]:
-        """Get exchange entity by ID"""
-        
-        if entity_type == "Exchange":
-            data = self._get_exchange_data(id_value.get('exchangeId'))
-            return self.create_entity_instance('Exchange', data) if data else None
-            
+            print(f"Warning: exchanges.json not found at {data_path}")
+            return []
+        except json.JSONDecodeError as e:
+            print(f"Error parsing exchanges.json: {e}")
+            return []
+
+    def get_entity_by_id(
+        self,
+        entity_type: str,
+        id_type: str,
+        id_value: Dict[str, Any],
+        parent_node: Optional[Entity] = None,
+        relationship: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> Optional[Entity]:
+        """Get exchange entity by identifier"""
+
+        for exchange in self._data:
+            if id_type == "exchangeId" and exchange.get("exchangeId") == id_value.get(
+                "exchangeId"
+            ):
+                return self._create_entity_from_data(exchange, **kwargs)
+            elif id_type == "mic" and exchange.get("mic") == id_value.get("mic"):
+                return self._create_entity_from_data(exchange, **kwargs)
+
         return None
-    
-    def _get_exchange_data(self, exchange_id: str) -> Optional[Dict[str, Any]]:
-        """Get raw exchange data by exchange ID"""
-        exchanges = self.mock_data.get('exchanges', [])
-        for exchange in exchanges:
-            if exchange.get('exchangeId') == exchange_id:
-                return exchange
-        return None
-    
-    def get_related_entity_ids(self, source_entity: BaseEntity, 
-                              relationship_name: str, **kwargs) -> List[Tuple[str, str]]:
-        """Get related entity IDs based on relationship"""
-        # Exchanges typically don't have outbound relationships in this model
+
+    def _create_entity_from_data(
+        self, exchange_data: Dict[str, Any], **kwargs
+    ) -> Entity:
+        """Create Entity object from exchange data"""
+        transformed_data = {
+            "id": exchange_data.get("exchangeId"),
+            "exchangeId": exchange_data.get("exchangeId"),
+            "titleLine1": exchange_data.get("exchangeId", ""),
+            "titleLine2": f"{exchange_data.get('description', '')} {exchange_data.get('currency', '')}",
+            "status": exchange_data.get("status", "UNKNOWN"),
+            "mic": exchange_data.get("mic"),
+            "idType": "exchangeId",
+            "idValue": {"exchangeId": exchange_data.get("exchangeId")},
+            "effectiveDate": kwargs.get("as_of", ""),
+            "source": kwargs.get("source", "Athena"),
+            "isFurtherExpandable": False,
+        }
+
+        return Entity(
+            data=transformed_data, entity_type="Exchange", display_type="graph-node"
+        )
+
+    def get_related_entity_ids(
+        self, source_entity: Entity, relationship: Dict[str, Any], **kwargs
+    ) -> List[Tuple[str, Dict[str, Any]]]:
+        """Get IDs of related entities"""
+        # Exchange doesn't have outgoing relationships in current model
         return []
-    
-    def resolve_entity_type(self, generic_type: str, id_type: str, 
-                          id_value: Dict[str, Any]) -> Optional[str]:
-        """Resolve entity type"""
-        # Exchanges are not generic types
-        return None
